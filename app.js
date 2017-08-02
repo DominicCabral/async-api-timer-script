@@ -11,14 +11,14 @@ const apiKey = 'API KEY'
 
 //program arguments
 program
-    .option('-m, --model [value]') //humans,brands, or context
+    .option('-a, --apiUrl [value]') //api url
     .option('-t, --total [value]') //total amount of requests
     .option('-h, --host [value]') //machine host url for callback
     .parse(process.argv);
 
 const hostAddress = program.host;
 const total = program.total;
-const model = program.model;
+const apiUrl = program.apiUrl;
 console.log(total)
 var i = 0
     //Listen for callback
@@ -46,7 +46,7 @@ for (var x = 0; x < total; x++) {
             "callback_url": hostAddress + "/callback",
             "threshold": 10
         },
-        url: 'https://iris.azure-api.net/image-detection/process/' + model,
+        url: apiUrl,
         headers: {
             'Ocp-Apim-Subscription-Key': apiKey
         }
